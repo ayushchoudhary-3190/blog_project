@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="/static/css/sign_in.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="signin-container">
+        
+        <h1 class="title">Sign In</h1>
+        
+        <form class="signin-form" method="post" action="/signin">
+            <div class="input-group">
+                <label for="email" class="email-label">email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    class="form-input"
+                    name="email"
+                    required
+                >
+            </div>
+            
+            <div class="input-group">
+                <label for="password" class="password-label">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    class="form-input"
+                    name="password"
+                    required
+                >
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                Login
+            </button>
+
+            <p >
+                Don't have an account?<a href="/signup">Sign up</a>
+            </p>
+        </form>
+    </div>
+</body>
+</html>

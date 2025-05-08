@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Content</title>
+    <link rel="stylesheet" href="/static/css/new_blog.css">
+</head>
+<body>
+    <form method="post" action="/create">
+        <div class="blog-container-left">
+            <h1 class="blog-title">Enter Blog details</h1>
+            
+            <div class="content-section-left">
+                <div class="input-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" placeholder="Enter blog title">
+                </div>
+                
+                <div class="input-group">
+                    <label for="genre">Genre</label>
+                    <input type="text" id="genre" placeholder="Enter blog genre">
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-container-right">
+            <h1 class="blog-title">Blog Content</h1>
+
+            <div class="input-group">
+                <input type="text" id="content" placeholder="Enter blog content">
+            </div>
+
+            <button type="submit">Save</button>
+        </div>
+    </form>
+</body>
+</html>

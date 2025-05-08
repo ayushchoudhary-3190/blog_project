@@ -1,0 +1,13 @@
+root = "."
+tmp_dir = "tmp"
+[build]
+  bin = "tmp/main.exe" # Ensure the binary is an .exe file
+  cmd = "go build -o tmp/main.exe ./cmd/main.go" # Correct the build command
+  include_ext = ["go"]
+  exclude_dir = ["assets", "tmp", "vendor"]
+[watch]
+  include = ["**/*.go"]
+  exclude = ["tmp/**", "vendor/**"]
+[log]
+  time = true
+  level = "info"

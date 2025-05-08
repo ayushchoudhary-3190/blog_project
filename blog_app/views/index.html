@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOGGY - Share Your Stories</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .hero {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center; /* Aligns the text in the center */
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .toggle-sidebar {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .toggle-sidebar:hover {
+            background-color: #0056b3;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: black;
+            padding: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+
+        .sidebar button {
+            margin-top: 20px; /* Reduced margin to ensure buttons are positioned correctly below the toggle button */
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            background: none;
+            color: white;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .sidebar button:hover {
+            background-color: #333;
+        }
+
+        .content {
+            flex: 1;
+            margin-left: 200px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .content.collapsed {
+            margin-left: 0;
+        }
+    </style>
+</head>
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const content = document.querySelector('.content');
+        sidebar.classList.toggle('collapsed');
+        content.classList.toggle('collapsed');
+    }
+</script>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to Bloggy</h1>
+        <button class="hero-btn"><a href="/create">Create a Blog</a></button>
+    </div>
+
+    <div class="container">
+        <button class="toggle-sidebar" onclick="toggleSidebar()">☰</button>
+        <div class="sidebar" id="sidebar">
+            {{if.isLoggedin}}
+                <button onclick="window.location.href='/blogs'">My Blogs</button>
+                <button onclick="window.location.href='/logout'">Logout</button>
+            {{else}}
+                <button onclick="window.location.href='/signin'">Sign In</button>
+            {{end}}
+        </div>
+        
+    </div>
+
+ 
+        
+    <section>   
+        <div class="container">
+             <div class="grid">
+                <!-- Category 1 - Writing -->
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Notebook with pen" class="card-image">
+                    <button class="category-btn">Writing</button>
+                </div>
+                
+                <!-- Category 2 - Technology -->
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="AI Technology" class="card-image">
+                    <button class="category-btn">Technology</button>
+                </div>
+                
+                <!-- Category 3 - Food -->
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Pasta dish" class="card-image">
+                    <button class="category-btn">Food</button>
+                </div>
+                
+                <!-- Category 4 - Travel -->
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mountain landscape" class="card-image">
+                    <button class="category-btn">Travel</button>
+                </div>
+                
+                <!-- Category 5 - Nature -->
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Flowers in fog" class="card-image">
+                    <button class="category-btn">Nature</button>
+                </div>
+                
+                <!-- Category 6 - Art -->
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Abstract art" class="card-image">
+                    <button class="category-btn">Art</button>
+                </div>
+                
+                <!-- Category 7 - Business -->
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="City skyline" class="card-image">
+                    <button class="category-btn">Business</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    <h2 class="footer-logo">Bloggy</h2>
+                    <p class="footer-description">
+                        A platform where writers and readers come
+                        together to share and discover inspiring
+                        stories, insights and ideas.
+                    </p>
+                </div>
+                
+                <div class="footer-navigation">
+                    <h3 class="footer-heading">NAVIGATION</h3>
+                    <ul class="footer-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="trending.html">Trending</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
