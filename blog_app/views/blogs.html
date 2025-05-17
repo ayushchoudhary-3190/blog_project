@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Blogs</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>My Blogs</h1>
+    {{if .Blogs}}
+        <ul>
+        {{range .Blogs}}
+            <li>
+                <h2>{{.Title}}</h2>
+                <p><b>Genre:</b> {{.Genre}}</p>
+                <p>{{.Content}}</p>
+            </li>
+        {{end}}
+        </ul>
+    {{else}}
+        <p>You have not created any blogs yet.</p>
+    {{end}}
+    <a href="/">Back to Home</a>
+</body>
+</html>
