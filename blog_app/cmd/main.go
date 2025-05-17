@@ -322,6 +322,38 @@ func main(){
 		return c.Redirect("/")
 	})
 	
+	//render all blogs created by user under myblogs button
+	// Render all blogs created by the logged-in user
+	app.Get("/blogs", isAuthenticated, func(c *fiber.Ctx) error {
+		// Retrieve session
+		sess, err := store.Get(c)
+		if err != nil {
+			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+				"error": "failed to retrieve session",
+			})
+		}
+
+		userID := sess.Get("userID")
+		currID, ok := userID.(float64)
+		if !ok {
+			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+				"error": "failed to retrieve user ID",
+			})
+		}
+		userIDUint := uint(currID)
+
+		// Fetch blogs for this user from the blogs database
+		var blogs []NewBlog
+		if err := db1.Where("user_id = ?", userIDUint).Find(&blogs).Error; err != nil {
+			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+				"error": "failed to fetch blogs",
+			})
+		}
+
+		return c.Render("my_blogs", fiber.Map{
+			"Blogs": blogs,
+		})
+	})
 
 	app.Listen(":8080")
 }
