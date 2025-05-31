@@ -1,0 +1,4 @@
+build:
+  command: go build -o app ./blog_app/cmd
+start:
+  command: ./app
