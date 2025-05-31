@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>My Blogs</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/my_blogs.css">
 </head>
 <body>
-    <h1>My Blogs</h1>
-    {{if .Blogs}}
-        <ul>
-        {{range .Blogs}}
-            <li>
-                <h2>{{.Title}}</h2>
-                <p><b>Genre:</b> {{.Genre}}</p>
-                <p>{{.Content}}</p>
-            </li>
+    <div class="container">
+        <h1>My Blogs</h1>
+        {{if .Blogs}}
+            <div class="blog-list">
+            {{range .Blogs}}
+                <div class="blog-card">
+                    <div class="blog-title">{{.Title}}</div>
+                    <div class="blog-genre">{{.Genre}}</div>
+                    <div class="blog-content">{{.Content}}</div>
+                </div>
+            {{end}}
+            </div>
+        {{else}}
+            <p>You have not created any blogs yet.</p>
         {{end}}
-        </ul>
-    {{else}}
-        <p>You have not created any blogs yet.</p>
-    {{end}}
-    <a href="/">Back to Home</a>
+        <a href="/" style="display:block;margin-top:32px;text-align:center;color:#ffb347;text-decoration:none;font-weight:500;">Back to Home</a>
+    </div>
 </body>
 </html>
